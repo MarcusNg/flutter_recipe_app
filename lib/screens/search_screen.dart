@@ -77,7 +77,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   text: TextSpan(
                     style: Theme.of(context)
                         .textTheme
-                        .body1
+                        .bodyText1
                         .copyWith(fontSize: 25),
                     children: [
                       TextSpan(
@@ -96,21 +96,13 @@ class _SearchScreenState extends State<SearchScreen> {
                     ],
                   ),
                 ),
-                SliderTheme(
-                  data: SliderTheme.of(context).copyWith(
-                    thumbColor: Theme.of(context).primaryColor,
-                    activeTrackColor: Theme.of(context).primaryColor,
-                    inactiveTrackColor: Colors.lightBlue[100],
-                    trackHeight: 6.0,
-                  ),
-                  child: Slider(
-                    min: 0.0,
-                    max: 4500.0,
-                    value: _targetCalories,
-                    onChanged: (value) => setState(() {
-                      _targetCalories = value.round().toDouble();
-                    }),
-                  ),
+                Slider(
+                  min: 0.0,
+                  max: 4500.0,
+                  value: _targetCalories,
+                  onChanged: (value) => setState(() {
+                    _targetCalories = value.round().toDouble();
+                  }),
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 30.0),
@@ -140,14 +132,16 @@ class _SearchScreenState extends State<SearchScreen> {
                   ),
                 ),
                 SizedBox(height: 30.0),
-                FlatButton(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 60.0,
-                    vertical: 8.0,
-                  ),
-                  color: Theme.of(context).primaryColor,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 60.0,
+                      vertical: 8.0,
+                    ),
+                    primary: Theme.of(context).primaryColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
                   ),
                   child: Text(
                     'Search',
