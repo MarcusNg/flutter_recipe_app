@@ -1,4 +1,4 @@
-# Flutter Recipe App Tutorial | Apps From Scratch
+# Flutter Recipe App thesis BSIT 3A
 
 [YouTube Tutorial](https://youtu.be/l3CIMZSAaIk)
 
