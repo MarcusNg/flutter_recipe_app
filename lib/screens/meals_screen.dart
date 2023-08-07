@@ -8,7 +8,7 @@ import 'package:flutter_recipe_app/services/api_service.dart';
 class MealsScreen extends StatefulWidget {
   final MealPlan mealPlan;
 
-  MealsScreen({this.mealPlan});
+  MealsScreen({required this.mealPlan});
 
   @override
   _MealsScreenState createState() => _MealsScreenState();

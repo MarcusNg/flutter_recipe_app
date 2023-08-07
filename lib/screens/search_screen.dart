@@ -9,6 +9,7 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
+
   List<String> _diets = [
     'None',
     'Gluten Free',
@@ -45,11 +46,13 @@ class _SearchScreenState extends State<SearchScreen> {
         decoration: BoxDecoration(
           image: DecorationImage(
             image: NetworkImage(
-              'https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
+              'https://i.imgur.com/9juGDyq.png',
             ),
             fit: BoxFit.cover,
           ),
         ),
+
+
         child: Center(
           child: Container(
             margin: EdgeInsets.symmetric(
@@ -64,21 +67,24 @@ class _SearchScreenState extends State<SearchScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text(
-                  'Daily Meal Planner',
-                  style: TextStyle(
-                    fontSize: 32.0,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 2.0,
+                Center(
+                  child: Text(
+                    'Paano Kaon: Meal Planner',
+                    style: TextStyle(
+                      fontSize: 32.0,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 2.0,
+                    ),
                   ),
                 ),
+                
                 SizedBox(height: 20.0),
                 RichText(
                   text: TextSpan(
                     style: Theme.of(context)
                         .textTheme
                         .bodyText1
-                        .copyWith(fontSize: 25),
+                        .copyWith(fontSize: 29),
                     children: [
                       TextSpan(
                         text: _targetCalories.truncate().toString(),
@@ -88,7 +94,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         ),
                       ),
                       TextSpan(
-                        text: ' cal',
+                        text: ' calories',
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                         ),
@@ -96,6 +102,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     ],
                   ),
                 ),
+
                 Slider(
                   min: 0.0,
                   max: 4500.0,
@@ -104,6 +111,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     _targetCalories = value.round().toDouble();
                   }),
                 ),
+
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 30.0),
                   child: DropdownButtonFormField(
@@ -131,6 +139,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     value: _diet,
                   ),
                 ),
+                
                 SizedBox(height: 30.0),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
