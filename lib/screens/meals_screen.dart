@@ -89,6 +89,7 @@ class _MealsScreenState extends State<MealsScreen> {
     );
   }
 
+//breakfast lunch dinner stuff
   _buildMealCard(Meal meal, int index) {
     String mealType = _mealType(index);
     return GestureDetector(
