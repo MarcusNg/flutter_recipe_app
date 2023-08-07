@@ -8,11 +8,11 @@ class MealPlan {
   final double protein;
 
   MealPlan({
-    this.meals,
-    this.calories,
-    this.carbs,
-    this.fat,
-    this.protein,
+    required this.meals,
+    required this.calories,
+    required this.carbs,
+    required this.fat,
+    required this.protein,
   });
 
   factory MealPlan.fromMap(Map<String, dynamic> map) {

@@ -9,7 +9,6 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-
   List<String> _diets = [
     'None',
     'Gluten Free',
@@ -26,17 +25,22 @@ class _SearchScreenState extends State<SearchScreen> {
   double _targetCalories = 2250;
   String _diet = 'None';
 
-  void _searchMealPlan() async {
-    MealPlan mealPlan = await APIService.instance.generateMealPlan(
-      targetCalories: _targetCalories.toInt(),
-      diet: _diet,
-    );
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (_) => MealsScreen(mealPlan: mealPlan),
-      ),
-    );
+  Future<void> _searchMealPlan() async {
+    try {
+      MealPlan mealPlan = await APIService.instance.generateMealPlan(
+        targetCalories: _targetCalories.toInt(),
+        diet: _diet,
+      );
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => MealsScreen(mealPlan: mealPlan),
+        ),
+      );
+    } catch (error) {
+      // Handle error here
+      print('Error: $error');
+    }
   }
 
   @override
@@ -51,13 +55,9 @@ class _SearchScreenState extends State<SearchScreen> {
             fit: BoxFit.cover,
           ),
         ),
-
-
         child: Center(
           child: Container(
-            margin: EdgeInsets.symmetric(
-              horizontal: 30.0,
-            ),
+            margin: EdgeInsets.symmetric(horizontal: 30.0),
             padding: EdgeInsets.symmetric(horizontal: 30.0),
             height: MediaQuery.of(context).size.height * 0.55,
             decoration: BoxDecoration(
@@ -67,23 +67,20 @@ class _SearchScreenState extends State<SearchScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Center(
-                  child: Text(
-                    'Paano Kaon: Meal Planner',
-                    style: TextStyle(
-                      fontSize: 32.0,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 2.0,
-                    ),
+                Text(
+                  'Paano Kaon: Meal Planner',
+                  style: TextStyle(
+                    fontSize: 32.0,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 2.0,
                   ),
                 ),
-                
                 SizedBox(height: 20.0),
                 RichText(
                   text: TextSpan(
                     style: Theme.of(context)
                         .textTheme
-                        .bodyText1
+                        .bodyText1!
                         .copyWith(fontSize: 29),
                     children: [
                       TextSpan(
@@ -102,7 +99,6 @@ class _SearchScreenState extends State<SearchScreen> {
                     ],
                   ),
                 ),
-
                 Slider(
                   min: 0.0,
                   max: 4500.0,
@@ -111,12 +107,11 @@ class _SearchScreenState extends State<SearchScreen> {
                     _targetCalories = value.round().toDouble();
                   }),
                 ),
-
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 30.0),
-                  child: DropdownButtonFormField(
+                  child: DropdownButtonFormField<String>(
                     items: _diets.map((String priority) {
-                      return DropdownMenuItem(
+                      return DropdownMenuItem<String>(
                         value: priority,
                         child: Text(
                           priority,
@@ -133,13 +128,12 @@ class _SearchScreenState extends State<SearchScreen> {
                     ),
                     onChanged: (value) {
                       setState(() {
-                        _diet = value;
+                        _diet = value!;
                       });
                     },
                     value: _diet,
                   ),
                 ),
-                
                 SizedBox(height: 30.0),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
