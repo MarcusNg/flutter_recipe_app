@@ -8,7 +8,7 @@ import 'package:flutter_recipe_app/services/api_service.dart';
 class MealsScreen extends StatefulWidget {
   final MealPlan mealPlan;
 
-  MealsScreen({this.mealPlan});
+  MealsScreen({required this.mealPlan});
 
   @override
   _MealsScreenState createState() => _MealsScreenState();
@@ -18,15 +18,15 @@ class _MealsScreenState extends State<MealsScreen> {
   _buildTotalNutrientsCard() {
     return Container(
       height: 140.0,
-      margin: EdgeInsets.all(20.0),
-      padding: EdgeInsets.symmetric(
+      margin: const EdgeInsets.all(20.0),
+      padding: const EdgeInsets.symmetric(
         horizontal: 15.0,
         vertical: 10.0,
       ),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(15.0),
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
             color: Colors.black12,
             offset: Offset(0, 2),
@@ -37,47 +37,47 @@ class _MealsScreenState extends State<MealsScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text(
+          const Text(
             'Total Nutrients',
             style: TextStyle(
               fontSize: 24.0,
               fontWeight: FontWeight.w600,
             ),
           ),
-          SizedBox(height: 10.0),
+          const SizedBox(height: 10.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Text(
                 'Calories: ${widget.mealPlan.calories.toString()} cal',
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.w600,
                 ),
               ),
               Text(
                 'Protein: ${widget.mealPlan.protein.toString()} g',
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.w600,
                 ),
               ),
             ],
           ),
-          SizedBox(height: 10.0),
+          const SizedBox(height: 10.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Text(
                 'Fat: ${widget.mealPlan.fat.toString()} g',
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.w600,
                 ),
               ),
               Text(
                 'Carbs: ${widget.mealPlan.carbs.toString()} g',
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.w600,
                 ),
@@ -89,6 +89,7 @@ class _MealsScreenState extends State<MealsScreen> {
     );
   }
 
+//breakfast lunch dinner stuff
   _buildMealCard(Meal meal, int index) {
     String mealType = _mealType(index);
     return GestureDetector(
@@ -111,11 +112,11 @@ class _MealsScreenState extends State<MealsScreen> {
           Container(
             height: 220.0,
             width: double.infinity,
-            margin: EdgeInsets.symmetric(
+            margin: const EdgeInsets.symmetric(
               horizontal: 20.0,
               vertical: 10.0,
             ),
-            padding: EdgeInsets.symmetric(
+            padding: const EdgeInsets.symmetric(
               horizontal: 15.0,
               vertical: 10.0,
             ),
@@ -126,7 +127,7 @@ class _MealsScreenState extends State<MealsScreen> {
                 fit: BoxFit.cover,
               ),
               borderRadius: BorderRadius.circular(15.0),
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                   color: Colors.black12,
                   offset: Offset(0, 2),
@@ -136,14 +137,14 @@ class _MealsScreenState extends State<MealsScreen> {
             ),
           ),
           Container(
-            margin: EdgeInsets.all(60.0),
-            padding: EdgeInsets.all(10.0),
+            margin: const EdgeInsets.all(60.0),
+            padding: const EdgeInsets.all(10.0),
             color: Colors.white70,
             child: Column(
               children: <Widget>[
                 Text(
                   mealType,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 30.0,
                     fontWeight: FontWeight.bold,
                     letterSpacing: 1.5,
@@ -151,7 +152,7 @@ class _MealsScreenState extends State<MealsScreen> {
                 ),
                 Text(
                   meal.title,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 24.0,
                     fontWeight: FontWeight.w600,
                   ),
@@ -182,7 +183,7 @@ class _MealsScreenState extends State<MealsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Your Meal Plan'),
+        title: const Text('Your Meal Plan'),
       ),
       body: ListView.builder(
         itemCount: 1 + widget.mealPlan.meals.length,

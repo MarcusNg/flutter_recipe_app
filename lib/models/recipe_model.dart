@@ -3,10 +3,10 @@ class Recipe {
   // Equipment
   // Ingredients
   // Steps
-  // etc.
+  // etc. this is optional here
 
   Recipe({
-    this.spoonacularSourceUrl,
+    required this.spoonacularSourceUrl,
   });
 
   factory Recipe.fromMap(Map<String, dynamic> map) {

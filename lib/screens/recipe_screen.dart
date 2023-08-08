@@ -6,7 +6,7 @@ class RecipeScreen extends StatefulWidget {
   final String mealType;
   final Recipe recipe;
 
-  RecipeScreen({this.mealType, this.recipe});
+  RecipeScreen({required this.mealType, required this.recipe});
   
   @override
   _RecipeScreenState createState() => _RecipeScreenState();
@@ -19,10 +19,11 @@ class _RecipeScreenState extends State<RecipeScreen> {
       appBar: AppBar(
         title: Text(widget.mealType),
       ),
-      body: WebView(
-        initialUrl: widget.recipe.spoonacularSourceUrl,
-        javascriptMode: JavascriptMode.unrestricted,
-      ),
+      //under construction
+      // body: WebView(
+      //   initialUrl: widget.recipe.spoonacularSourceUrl,
+      //   javascriptMode: JavascriptMode.unrestricted,
+      // ),
     );
   }
 }

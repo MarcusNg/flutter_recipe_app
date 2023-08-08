@@ -11,10 +11,11 @@ class APIService {
   static final APIService instance = APIService._instantiate();
 
   final String _baseUrl = 'api.spoonacular.com';
-  static const String API_KEY = '<YOUR_API_KEY>';
+  
+  static const String API_KEY = 'e1ea9d28071547329684438575c5d5c6';
 
   // Generate Meal Plan
-  Future<MealPlan> generateMealPlan({int targetCalories, String diet}) async {
+  Future<MealPlan> generateMealPlan({required int targetCalories, required String diet}) async {
     if (diet == 'None') diet = '';
     Map<String, String> parameters = {
       'timeFrame': 'day',
@@ -41,7 +42,7 @@ class APIService {
     }
   }
 
-  // Recipe Info
+  // Recipe Information
   Future<Recipe> fetchRecipe(String id) async {
     Map<String, String> parameters = {
       'includeNutrition': 'false',
